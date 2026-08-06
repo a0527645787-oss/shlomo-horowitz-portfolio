@@ -17,16 +17,18 @@ const projects = [
   {
     index: '01',
     title: 'ActionInbox',
-    description: 'An AI-assisted application that turns email into evidence-backed tasks, with review-first execution handoffs and clearly separated facts, guidance and recommendations.',
-    detail: 'Deployed as a single-host AWS stack with EC2, Docker Compose, Nginx, HTTPS and a private MySQL container.',
+    description: 'A live, deployed AI-assisted application that turns email into evidence-backed tasks, with review-first execution handoffs and clearly separated facts, guidance and recommendations.',
+    detail: 'Running at actioninboxapp.com on a single-host AWS stack with EC2, Docker Compose, Nginx, HTTPS and a private MySQL container.',
     stack: ['AWS EC2', 'FastAPI', 'Docker', 'MySQL', 'Nginx', 'Terraform'],
     href: 'https://github.com/a0527645787-oss/action-inbox-build-week',
+    liveHref: 'https://actioninboxapp.com/',
+    featured: true,
   },
   {
     index: '02',
-    title: 'World Cup Seat Booking',
-    description: 'A Flask and MySQL seat-booking application used to build a complete DevOps delivery path from source to a containerized EC2 deployment.',
-    detail: 'Includes GitHub Actions CI/CD, short-SHA image releases, health checks, automatic rollback, Prometheus, Grafana and Terraform.',
+    title: 'Containerized Booking Platform',
+    description: 'A complete DevOps delivery pipeline demonstrated through a World Cup seat-booking interface built with Flask and MySQL.',
+    detail: 'The engineering focus is containerized delivery to AWS EC2 with Docker Compose and Nginx, GitHub Actions CI/CD, short-SHA image releases, health checks, automatic rollback, Prometheus, Grafana and Terraform.',
     stack: ['Flask', 'Docker', 'GitHub Actions', 'Prometheus', 'Grafana', 'Terraform'],
     href: 'https://github.com/a0527645787-oss/world-cup-seat-booking-devops',
   },
@@ -147,7 +149,7 @@ function App() {
             </div>
             <div className="project-list">
               {projects.map((project) => (
-                <article className="project-card" key={project.title}>
+                <article className={project.featured ? 'project-card project-card-featured' : 'project-card'} key={project.title}>
                   <div className="project-index">{project.index}</div>
                   <div className="project-body">
                     <h3>{project.title}</h3>
@@ -155,9 +157,16 @@ function App() {
                     <p className="project-detail">{project.detail}</p>
                     <div className="tags">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>
                   </div>
-                  <a className="project-link" href={project.href} target="_blank" rel="noreferrer" aria-label={`View ${project.title} on GitHub`}>
-                    <span>View GitHub</span><Arrow diagonal />
-                  </a>
+                  <div className="project-actions">
+                    {project.liveHref && (
+                      <a className="project-link project-link-primary" href={project.liveHref} target="_blank" rel="noopener noreferrer" aria-label={`Open the live ${project.title} application`}>
+                        <span>Live App</span><Arrow diagonal />
+                      </a>
+                    )}
+                    <a className="project-link" href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} source code on GitHub`}>
+                      <span>Source Code</span><Arrow diagonal />
+                    </a>
+                  </div>
                 </article>
               ))}
             </div>

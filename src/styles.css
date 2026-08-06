@@ -106,13 +106,18 @@ em { color: var(--acid); font-style: normal; }
 .projects-heading h2 { line-height: 1.02; }
 .project-list { border-top: 1px solid var(--line); }
 .project-card { display: grid; grid-template-columns: 70px minmax(0, 1fr) 150px; gap: 1.5rem; padding: 3rem 0; border-bottom: 1px solid var(--line); align-items: start; }
+.project-card-featured { position: relative; }
+.project-card-featured::before { content: ''; position: absolute; left: 0; top: 3rem; bottom: 3rem; width: 2px; background: var(--acid); transform: translateX(-1.4rem); }
 .project-body h3 { margin: -.4rem 0 1rem; font-size: clamp(1.6rem, 3vw, 2.7rem); letter-spacing: -.04em; }
 .project-body > p { max-width: 710px; margin: 0 0 .8rem; color: var(--muted); line-height: 1.75; }
 .project-body .project-detail { color: #c4d2c9; }
 .project-body .tags { margin-top: 1.5rem; }
+.project-actions { display: grid; gap: .9rem; }
 .project-link { display: flex; justify-content: space-between; align-items: center; padding-bottom: .7rem; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--acid); font: .68rem var(--mono); text-transform: uppercase; letter-spacing: .08em; }
 .project-link:hover { border-color: var(--acid); }
 .project-link span + span { font-size: 1rem; }
+.project-link-primary { padding: .85rem; border: 1px solid var(--acid); background: var(--acid); color: var(--bg); }
+.project-link-primary:hover { border-color: var(--ink); background: var(--ink); }
 .learning-panel { display: grid; grid-template-columns: 1fr 1fr; background: var(--surface); border: 1px solid var(--line); }
 .learning-panel > div:first-child { padding: 4rem; border-right: 1px solid var(--line); }
 .learning-panel h2 { font-size: clamp(2.5rem, 4vw, 4rem); }
@@ -163,7 +168,7 @@ footer a { text-decoration: none; }
   .skill-card { min-height: 220px; }
   .skill-card h3 { margin-top: 3rem; }
   .project-card { grid-template-columns: 34px 1fr; padding: 2.5rem 0; }
-  .project-link { grid-column: 2; margin-top: .7rem; }
+  .project-actions { grid-column: 2; margin-top: .7rem; }
   .learning-panel > div:first-child { padding: 2rem; }
   .learning-items { grid-template-columns: 1fr; }
   .learning-items div { min-height: 110px; }
